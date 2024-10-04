@@ -5,27 +5,28 @@ import (
 	"sort"
 )
 
-func Kruskal(G Graph) {
-	edge := make([]Edge, 0)
+func Kruskal(G Graph) []Edge {
+	edge := make([]Edge, len(G.Vertices)-1)
 
-	set := make([]*LinkedList, 0)
+	set := make([]*LinkedList, len(G.Vertices))
 
-	for _, v := range G.Vertices {
-		set = append(set, CreateDisjointset(v))
+	for i, v := range G.Vertices {
+		set[i] = CreateDisjointset(v)
 	}
 
 	edges := make([]Edge, len(G.Edges))
 	copy(edges, G.Edges)
 	sort.Sort(ByPeso(edges))
 
-	fmt.Println(edges)
-
+	count := 0
 	for _, aresta := range edges {
 		if FindSet(*set[aresta.u]) != FindSet(*set[aresta.v]) {
-			edge = append(edge, aresta)
+			edge[count] = aresta
 			Union(&set[aresta.u], &set[aresta.v])
+			count++
 		}
 	}
-
 	fmt.Println(edge)
+
+	return edge
 }

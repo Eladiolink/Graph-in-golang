@@ -36,10 +36,6 @@ func FindSet(Set LinkedList) *Header {
 }
 
 func Union(u, v **LinkedList) {
-
-	fmt.Println((*u).Info, (*v).Info)
-	// fmt.Println(*(*u).Header, *(*v).Header)
-
 	(*u).Header.Tail.Next = (*v).Header.Head
 
 	aux := (*v).Header.Head
@@ -51,9 +47,6 @@ func Union(u, v **LinkedList) {
 	aux.Header = (*u).Header
 
 	(*u).Header.Tail = aux
-
-	PrintSet((*u).Header.Head)
-	fmt.Println()
 }
 
 func PrintSet(u *LinkedList) {
