@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -26,7 +25,6 @@ func Kruskal(G Graph) []Edge {
 			count++
 		}
 	}
-	fmt.Println(edge)
 
 	return edge
 }
