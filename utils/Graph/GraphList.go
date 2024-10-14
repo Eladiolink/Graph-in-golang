@@ -13,7 +13,7 @@ type Node struct {
 
 type Vertice struct {
 	Pai       int
-	Key       int
+	Key       float64
 	Info      int
 	Neighbors *Node
 }
@@ -26,7 +26,7 @@ type GraphList struct {
 func Init_graph(qtd_vertex int) GraphList {
 	graph := GraphList{
 		Vertice:   make([]Vertice, qtd_vertex),
-		IsDigraph: false,
+		IsDigraph: true,
 	}
 
 	i := 0

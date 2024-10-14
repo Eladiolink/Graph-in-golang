@@ -90,10 +90,10 @@ func Graph_by_file(nomeArquivo string) (Graph, error) {
 	return graph, nil
 }
 
-func Graph_list_by_file(nomeArquivo string) (GraphList.GraphList, error) {
+func Graph_list_by_file(nomeArquivo string) (*GraphList.GraphList, error) {
 	arquivo, err := os.Open(nomeArquivo)
 	if err != nil {
-		return GraphList.GraphList{}, err
+		return &GraphList.GraphList{}, err
 	}
 	defer arquivo.Close()
 
@@ -109,7 +109,7 @@ func Graph_list_by_file(nomeArquivo string) (GraphList.GraphList, error) {
 			qtd, err := strconv.Atoi(linha)
 
 			if err != nil {
-				return GraphList.GraphList{}, err
+				return &GraphList.GraphList{}, err
 			}
 
 			graph = GraphList.Init_graph(qtd)
@@ -129,10 +129,10 @@ func Graph_list_by_file(nomeArquivo string) (GraphList.GraphList, error) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return GraphList.GraphList{}, err
+		return &GraphList.GraphList{}, err
 	}
 
-	return graph, nil
+	return &graph, nil
 }
 
 // Para ordenar um slice de Edges

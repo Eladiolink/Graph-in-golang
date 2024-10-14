@@ -22,5 +22,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	GraphList.Print_graph(&graphList)
+	GraphList.Print_graph(graphList)
+
+	utils.Prim(&graphList, 3)
 }
