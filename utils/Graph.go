@@ -3,6 +3,7 @@ package utils
 import (
 	"bufio"
 	"fmt"
+	GraphList "graph-in-golang/utils/Graph"
 	"os"
 	"strconv"
 	"strings"
@@ -84,6 +85,51 @@ func Graph_by_file(nomeArquivo string) (Graph, error) {
 
 	if err := scanner.Err(); err != nil {
 		return Graph{}, err
+	}
+
+	return graph, nil
+}
+
+func Graph_list_by_file(nomeArquivo string) (GraphList.GraphList, error) {
+	arquivo, err := os.Open(nomeArquivo)
+	if err != nil {
+		return GraphList.GraphList{}, err
+	}
+	defer arquivo.Close()
+
+	scanner := bufio.NewScanner(arquivo)
+
+	count := 0
+	var graph GraphList.GraphList
+
+	for scanner.Scan() {
+		linha := scanner.Text()
+
+		if count == 1 {
+			qtd, err := strconv.Atoi(linha)
+
+			if err != nil {
+				return GraphList.GraphList{}, err
+			}
+
+			graph = GraphList.Init_graph(qtd)
+
+		}
+
+		if count > 1 {
+			infos := strings.Split(linha, " ")
+			u, _ := strconv.Atoi(infos[0])
+			v, _ := strconv.Atoi(infos[1])
+			w, _ := strconv.ParseFloat(infos[2], 64)
+
+			GraphList.Add_edge(&graph, u, v, w)
+		}
+
+		count++
+	}
+
+	if err := scanner.Err(); err != nil {
+		return GraphList.GraphList{}, err
 	}
 
 	return graph, nil

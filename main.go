@@ -16,56 +16,11 @@ func main() {
 
 	utils.Kruskal(graph)
 
-	heap := utils.CreateHeap(10)
+	graphList, err := utils.Graph_list_by_file("exemple.graph")
 
-	v := GraphList.Vertice{
-		Pai:       0,
-		Key:       5,
-		Info:      1,
-		Neighbors: nil,
+	if err != nil {
+		fmt.Println(err)
 	}
-	utils.AddHeap(&heap, v)
 
-	fmt.Println(heap.Heap[0])
-
-	v = GraphList.Vertice{
-		Pai:       0,
-		Key:       4,
-		Info:      10,
-		Neighbors: nil,
-	}
-	utils.AddHeap(&heap, v)
-	v = GraphList.Vertice{
-		Pai:       0,
-		Key:       3,
-		Info:      13,
-		Neighbors: nil,
-	}
-	utils.AddHeap(&heap, v)
-	v = GraphList.Vertice{
-		Pai:       0,
-		Key:       2,
-		Info:      24,
-		Neighbors: nil,
-	}
-	utils.AddHeap(&heap, v)
-
-	v = GraphList.Vertice{
-		Pai:       0,
-		Key:       6,
-		Info:      24,
-		Neighbors: nil,
-	}
-	utils.AddHeap(&heap, v)
-
-	v = GraphList.Vertice{
-		Pai:       0,
-		Key:       1,
-		Info:      -1,
-		Neighbors: nil,
-	}
-	utils.AddHeap(&heap, v)
-
-	fmt.Println(heap.Heap)
-	fmt.Println(heap.Length)
+	GraphList.Print_graph(&graphList)
 }
