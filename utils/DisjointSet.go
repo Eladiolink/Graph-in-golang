@@ -58,7 +58,7 @@ func PrintSet(u *LinkedList) {
 		aux = aux.Next
 	}
 
-	fmt.Println()
+	fmt.Print("x\n")
 }
 
 func PrintHeader(header Header) {

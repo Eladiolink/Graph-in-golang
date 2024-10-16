@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	graph, err := utils.Graph_by_file("exemple.graph")
+	graph, err := utils.Graph_by_file("exemple-2.graph")
 
 	if err != nil {
 		fmt.Println(err)
@@ -15,11 +15,11 @@ func main() {
 
 	utils.Kruskal(graph)
 
-	graphList, err := utils.Graph_list_by_file("exemple.graph")
+	// graphList, err := utils.Graph_list_by_file("exemple.graph")
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	utils.Prim(&graphList, 3)
+	// utils.Prim(&graphList, 3)
 }
