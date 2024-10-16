@@ -60,9 +60,10 @@ func AddHeap(heap *Heap, vertice *GraphList.Vertice) {
 }
 
 func Heap_extract_min(heap **Heap) GraphList.Vertice {
+	BuildMinHeap(*heap)
 	tam_heap := *(*heap).Length
 	min := (*heap).Heap[1]
-	(*heap).Heap[1] = (*heap).Heap[tam_heap-1]
+	(*heap).Heap[1] = (*heap).Heap[tam_heap]
 	*(*heap).Length--
 
 	MinHeapfy(*heap, 1)

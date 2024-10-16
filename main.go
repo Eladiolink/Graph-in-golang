@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"graph-in-golang/utils"
-	GraphList "graph-in-golang/utils/Graph"
 )
 
 func main() {
@@ -21,8 +20,6 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	GraphList.Print_graph(graphList)
 
 	utils.Prim(&graphList, 3)
 }
